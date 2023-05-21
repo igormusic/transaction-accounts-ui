@@ -1,36 +1,34 @@
 package com.tvmsoftware.views.accounttypes;
 
 import com.tvmsoftware.views.MainLayout;
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.Paragraph;
+import com.tvmsoftware.webclient.AccountTypeClient;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
-import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
+import org.openapitools.client.model.AccountType;
 
 @PageTitle("Account Types")
 @Route(value = "account-types", layout = MainLayout.class)
 @RouteAlias(value = "", layout = MainLayout.class)
 public class AccountTypesView extends VerticalLayout {
 
-    public AccountTypesView() {
-        setSpacing(false);
+    private final AccountTypeClient client;
+    private final Grid<AccountType> grid = new Grid<>(AccountType.class, false);
 
-        Image img = new Image("images/empty-plant.png", "placeholder plant");
-        img.setWidth("200px");
-        add(img);
+    public AccountTypesView(AccountTypeClient client) {
+        this.client = client;
 
-        H2 header = new H2("This place intentionally left empty");
-        header.addClassNames(Margin.Top.XLARGE, Margin.Bottom.MEDIUM);
-        add(header);
-        add(new Paragraph("It’s a place where you can grow your own UI 🤗"));
+        grid.addColumn("name").setAutoWidth(true);
+        grid.addColumn("label").setAutoWidth(true);
 
-        setSizeFull();
-        setJustifyContentMode(JustifyContentMode.CENTER);
-        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-        getStyle().set("text-align", "center");
+        var accountTypes = client.getAll();
+
+        grid.setItems(accountTypes);
+
+        add(grid);
+
     }
 
 }

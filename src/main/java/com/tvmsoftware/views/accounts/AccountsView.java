@@ -1,34 +1,50 @@
 package com.tvmsoftware.views.accounts;
 
 import com.tvmsoftware.views.MainLayout;
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.Paragraph;
+import com.tvmsoftware.webclient.AccountClient;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
+import org.openapitools.client.model.AccountInfo;
+
+import java.math.BigDecimal;
 
 @PageTitle("Accounts")
 @Route(value = "accounts", layout = MainLayout.class)
 public class AccountsView extends VerticalLayout {
 
-    public AccountsView() {
-        setSpacing(false);
+    private final AccountClient client;
+    private final Grid<AccountInfo> grid = new Grid<>(AccountInfo.class, false);
 
-        Image img = new Image("images/empty-plant.png", "placeholder plant");
-        img.setWidth("200px");
-        add(img);
+    public AccountsView(AccountClient client) {
+        this.client = client;
 
-        H2 header = new H2("This place intentionally left empty");
-        header.addClassNames(Margin.Top.XLARGE, Margin.Bottom.MEDIUM);
-        add(header);
-        add(new Paragraph("It’s a place where you can grow your own UI 🤗"));
+        grid.addColumn("accountId").setAutoWidth(true);
+        grid.addColumn("active").setAutoWidth(true);
+        grid.addColumn( ai-> ai.getAccount().getAccountTypeName()).setHeader("Account Type").setAutoWidth(true);
+        grid.addColumn(ai-> ai.getAccount().getStartDate()).setHeader("Start Date").setAutoWidth(true);
+        grid.addColumn(ai-> ai.getAccount().getPositions() != null ? ai.getAccount().getPositions().get("Principal") : BigDecimal.ZERO).setHeader("Principal").setAutoWidth(true);
+        // Add a custom column with a button
+        Grid.Column<AccountInfo> customColumn = grid.addComponentColumn(entity -> {
+            Button button = new Button("Edit");
+            button.addClickListener(event -> {
+                // Handle button click event
+                System.out.println("Button clicked for entity with ID: " + entity.getAccountId());
+            });
+            return button;
+        }).setHeader("Actions");
 
-        setSizeFull();
-        setJustifyContentMode(JustifyContentMode.CENTER);
-        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-        getStyle().set("text-align", "center");
+        // Set the column width
+        customColumn.setWidth("150px");
+
+        var accounts = client.getAll();
+
+        grid.setItems(accounts);
+
+        add(grid);
+
     }
 
 }
