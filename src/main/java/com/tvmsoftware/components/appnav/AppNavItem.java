@@ -1,4 +1,4 @@
-package com.tvmsoftware.application.components.appnav;
+package com.tvmsoftware.components.appnav;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;

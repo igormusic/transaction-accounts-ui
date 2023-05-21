@@ -1,21 +1,19 @@
-package com.tvmsoftware.application.views.accounttypes;
+package com.tvmsoftware.views.accounts;
 
-import com.tvmsoftware.application.views.MainLayout;
+import com.tvmsoftware.views.MainLayout;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.RouteAlias;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 
-@PageTitle("Account Types")
-@Route(value = "account-types", layout = MainLayout.class)
-@RouteAlias(value = "", layout = MainLayout.class)
-public class AccountTypesView extends VerticalLayout {
+@PageTitle("Accounts")
+@Route(value = "accounts", layout = MainLayout.class)
+public class AccountsView extends VerticalLayout {
 
-    public AccountTypesView() {
+    public AccountsView() {
         setSpacing(false);
 
         Image img = new Image("images/empty-plant.png", "placeholder plant");

@@ -1,10 +1,10 @@
-package com.tvmsoftware.application.views;
+package com.tvmsoftware.views;
 
 
-import com.tvmsoftware.application.components.appnav.AppNav;
-import com.tvmsoftware.application.components.appnav.AppNavItem;
-import com.tvmsoftware.application.views.accounts.AccountsView;
-import com.tvmsoftware.application.views.accounttypes.AccountTypesView;
+import com.tvmsoftware.components.appnav.AppNav;
+import com.tvmsoftware.components.appnav.AppNavItem;
+import com.tvmsoftware.views.accounts.AccountsView;
+import com.tvmsoftware.views.accounttypes.AccountTypesView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Footer;
