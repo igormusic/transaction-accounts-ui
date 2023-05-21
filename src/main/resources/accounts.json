@@ -1,0 +1,1208 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/status": {
+            "get": {
+                "summary": "Get Status",
+                "operationId": "get_status_status_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounttypes": {
+            "get": {
+                "summary": "Get Account Types",
+                "operationId": "get_account_types_accounttypes_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create Account Type",
+                "operationId": "create_account_type_accounttypes_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AccountType"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounttypes/{name}": {
+            "get": {
+                "summary": "Get Account Type By Name",
+                "operationId": "get_account_type_by_name_accounttypes__name__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Name",
+                            "type": "string"
+                        },
+                        "name": "name",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete Account Type",
+                "operationId": "delete_account_type_accounttypes__name__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Name",
+                            "type": "string"
+                        },
+                        "name": "name",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful Response"
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/": {
+            "get": {
+                "summary": "Get Accounts",
+                "operationId": "get_accounts_accounts__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Response Get Accounts Accounts  Get",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AccountInfo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create Account",
+                "operationId": "create_account_accounts__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Account"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}": {
+            "get": {
+                "summary": "Get Account By Id",
+                "operationId": "get_account_by_id_accounts__account_id__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Account Id",
+                            "type": "integer"
+                        },
+                        "name": "account_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update Account",
+                "operationId": "update_account_accounts__account_id__put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Account Id",
+                            "type": "integer"
+                        },
+                        "name": "account_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Active",
+                            "type": "boolean"
+                        },
+                        "name": "active",
+                        "in": "query"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Account"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete Account",
+                "operationId": "delete_account_accounts__account_id__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Account Id",
+                            "type": "integer"
+                        },
+                        "name": "account_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful Response"
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}/value": {
+            "get": {
+                "summary": "Value Account",
+                "operationId": "value_account_accounts__account_id__value_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Account Id",
+                            "type": "integer"
+                        },
+                        "name": "account_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Action Date",
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "name": "action_date",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ForcastResult"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}/solve": {
+            "get": {
+                "summary": "Solve Account",
+                "operationId": "solve_account_accounts__account_id__solve_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Account Id",
+                            "type": "integer"
+                        },
+                        "name": "account_id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Account": {
+                "title": "Account",
+                "required": [
+                    "start_date",
+                    "account_type_name"
+                ],
+                "type": "object",
+                "properties": {
+                    "start_date": {
+                        "title": "Start Date",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "account_type_name": {
+                        "title": "Account Type Name",
+                        "type": "string"
+                    },
+                    "positions": {
+                        "title": "Positions",
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Position"
+                        },
+                        "default": {}
+                    },
+                    "value_dated_properties": {
+                        "title": "Value Dated Properties",
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/PropertyValue"
+                        }
+                    },
+                    "properties": {
+                        "title": "Properties",
+                        "type": "object"
+                    },
+                    "dates": {
+                        "title": "Dates",
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "default": {}
+                    },
+                    "schedules": {
+                        "title": "Schedules",
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Schedule"
+                        },
+                        "default": {}
+                    },
+                    "transactions": {
+                        "title": "Transactions",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Transaction"
+                        },
+                        "default": []
+                    },
+                    "instalments": {
+                        "title": "Instalments",
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Instalment"
+                        },
+                        "default": {}
+                    }
+                }
+            },
+            "AccountInfo": {
+                "title": "AccountInfo",
+                "required": [
+                    "account_id",
+                    "active",
+                    "account"
+                ],
+                "type": "object",
+                "properties": {
+                    "account_id": {
+                        "title": "Account Id",
+                        "type": "integer"
+                    },
+                    "active": {
+                        "title": "Active",
+                        "type": "boolean"
+                    },
+                    "account": {
+                        "$ref": "#/components/schemas/Account"
+                    }
+                }
+            },
+            "AccountType": {
+                "title": "AccountType",
+                "required": [
+                    "name",
+                    "label"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    },
+                    "transaction_types": {
+                        "title": "Transaction Types",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TransactionType"
+                        },
+                        "default": []
+                    },
+                    "position_types": {
+                        "title": "Position Types",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PositionType"
+                        },
+                        "default": []
+                    },
+                    "date_types": {
+                        "title": "Date Types",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DateType"
+                        },
+                        "default": []
+                    },
+                    "rate_types": {
+                        "title": "Rate Types",
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/RateType"
+                        },
+                        "default": {}
+                    },
+                    "triggered_transactions": {
+                        "title": "Triggered Transactions",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TriggeredTransaction"
+                        },
+                        "default": []
+                    },
+                    "schedule_types": {
+                        "title": "Schedule Types",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ScheduleType"
+                        },
+                        "default": []
+                    },
+                    "property_types": {
+                        "title": "Property Types",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PropertyType"
+                        },
+                        "default": []
+                    },
+                    "scheduled_transactions": {
+                        "title": "Scheduled Transactions",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ScheduledTransaction"
+                        },
+                        "default": []
+                    },
+                    "instalment_type": {
+                        "$ref": "#/components/schemas/InstalmentType"
+                    }
+                }
+            },
+            "BusinessDayAdjustment": {
+                "title": "BusinessDayAdjustment",
+                "enum": [
+                    "no_adjustment",
+                    "next_working_day",
+                    "previous_working_day",
+                    "closest_working_day"
+                ],
+                "description": "An enumeration."
+            },
+            "DataType": {
+                "title": "DataType",
+                "enum": [
+                    "decimal",
+                    "string",
+                    "boolean"
+                ],
+                "description": "An enumeration."
+            },
+            "DateType": {
+                "title": "DateType",
+                "required": [
+                    "name",
+                    "label"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    },
+                    "required": {
+                        "title": "Required",
+                        "type": "boolean",
+                        "default": true
+                    }
+                }
+            },
+            "ForcastResult": {
+                "title": "ForcastResult",
+                "required": [
+                    "account_id",
+                    "account",
+                    "trace_list"
+                ],
+                "type": "object",
+                "properties": {
+                    "account_id": {
+                        "title": "Account Id",
+                        "type": "integer"
+                    },
+                    "account": {
+                        "$ref": "#/components/schemas/Account"
+                    },
+                    "trace_list": {
+                        "title": "Trace List",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TransactionTrace"
+                        }
+                    }
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "Instalment": {
+                "title": "Instalment",
+                "required": [
+                    "amount",
+                    "is_fixed"
+                ],
+                "type": "object",
+                "properties": {
+                    "amount": {
+                        "title": "Amount",
+                        "type": "number"
+                    },
+                    "is_fixed": {
+                        "title": "Is Fixed",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "InstalmentType": {
+                "title": "InstalmentType",
+                "required": [
+                    "name",
+                    "label",
+                    "timing",
+                    "schedule_name",
+                    "transaction_type",
+                    "property_name",
+                    "solve_for_zero_position",
+                    "solve_for_date"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    },
+                    "timing": {
+                        "$ref": "#/components/schemas/ScheduledTransactionTiming"
+                    },
+                    "schedule_name": {
+                        "title": "Schedule Name",
+                        "type": "string"
+                    },
+                    "transaction_type": {
+                        "title": "Transaction Type",
+                        "type": "string"
+                    },
+                    "property_name": {
+                        "title": "Property Name",
+                        "type": "string"
+                    },
+                    "solve_for_zero_position": {
+                        "title": "Solve For Zero Position",
+                        "type": "string"
+                    },
+                    "solve_for_date": {
+                        "title": "Solve For Date",
+                        "type": "string"
+                    }
+                }
+            },
+            "Position": {
+                "title": "Position",
+                "type": "object",
+                "properties": {
+                    "amount": {
+                        "title": "Amount",
+                        "type": "number",
+                        "default": 0
+                    }
+                }
+            },
+            "PositionRule": {
+                "title": "PositionRule",
+                "required": [
+                    "operation",
+                    "position_type_name"
+                ],
+                "type": "object",
+                "properties": {
+                    "operation": {
+                        "$ref": "#/components/schemas/TransactionOperation"
+                    },
+                    "position_type_name": {
+                        "title": "Position Type Name",
+                        "type": "string"
+                    }
+                }
+            },
+            "PositionType": {
+                "title": "PositionType",
+                "required": [
+                    "name",
+                    "label"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    }
+                }
+            },
+            "PropertyType": {
+                "title": "PropertyType",
+                "required": [
+                    "name",
+                    "label",
+                    "data_type"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    },
+                    "data_type": {
+                        "$ref": "#/components/schemas/DataType"
+                    },
+                    "required": {
+                        "title": "Required",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "value_dated": {
+                        "title": "Value Dated",
+                        "type": "boolean",
+                        "default": false
+                    }
+                }
+            },
+            "PropertyValue": {
+                "title": "PropertyValue",
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "title": "Value",
+                        "type": "object"
+                    }
+                }
+            },
+            "RateTier": {
+                "title": "RateTier",
+                "required": [
+                    "from_amount",
+                    "to_amount",
+                    "rate"
+                ],
+                "type": "object",
+                "properties": {
+                    "from_amount": {
+                        "title": "From Amount",
+                        "type": "number"
+                    },
+                    "to_amount": {
+                        "title": "To Amount",
+                        "type": "number"
+                    },
+                    "rate": {
+                        "title": "Rate",
+                        "type": "number"
+                    }
+                }
+            },
+            "RateType": {
+                "title": "RateType",
+                "required": [
+                    "name",
+                    "label"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    },
+                    "rate_tiers": {
+                        "title": "Rate Tiers",
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/RateTier"
+                            }
+                        },
+                        "default": {}
+                    }
+                }
+            },
+            "Schedule": {
+                "title": "Schedule",
+                "required": [
+                    "start_date",
+                    "end_type",
+                    "frequency"
+                ],
+                "type": "object",
+                "properties": {
+                    "start_date": {
+                        "title": "Start Date",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "end_type": {
+                        "$ref": "#/components/schemas/ScheduleEndType"
+                    },
+                    "frequency": {
+                        "$ref": "#/components/schemas/ScheduleFrequency"
+                    },
+                    "interval": {
+                        "title": "Interval",
+                        "type": "integer",
+                        "default": [
+                            0
+                        ]
+                    },
+                    "adjustment": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/BusinessDayAdjustment"
+                            }
+                        ]
+                    },
+                    "end_date": {
+                        "title": "End Date",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "number_of_repeats": {
+                        "title": "Number Of Repeats",
+                        "type": "integer",
+                        "default": 0
+                    },
+                    "include_dates": {
+                        "title": "Include Dates",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "default": []
+                    },
+                    "exclude_dates": {
+                        "title": "Exclude Dates",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "default": []
+                    },
+                    "cached_dates": {
+                        "title": "Cached Dates",
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    }
+                }
+            },
+            "ScheduleEndType": {
+                "title": "ScheduleEndType",
+                "enum": [
+                    "no_end",
+                    "end_repeats",
+                    "end_date"
+                ],
+                "description": "An enumeration."
+            },
+            "ScheduleFrequency": {
+                "title": "ScheduleFrequency",
+                "enum": [
+                    "daily",
+                    "monthly"
+                ],
+                "description": "An enumeration."
+            },
+            "ScheduleType": {
+                "title": "ScheduleType",
+                "required": [
+                    "name",
+                    "label",
+                    "frequency",
+                    "end_type",
+                    "business_day_adjustment",
+                    "interval_expression",
+                    "start_date_expression"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    },
+                    "frequency": {
+                        "$ref": "#/components/schemas/ScheduleFrequency"
+                    },
+                    "end_type": {
+                        "$ref": "#/components/schemas/ScheduleEndType"
+                    },
+                    "business_day_adjustment": {
+                        "$ref": "#/components/schemas/BusinessDayAdjustment"
+                    },
+                    "interval_expression": {
+                        "title": "Interval Expression",
+                        "type": "string"
+                    },
+                    "start_date_expression": {
+                        "title": "Start Date Expression",
+                        "type": "string"
+                    },
+                    "end_date_expression": {
+                        "title": "End Date Expression",
+                        "type": "string"
+                    },
+                    "number_of_repeats_expression": {
+                        "title": "Number Of Repeats Expression",
+                        "type": "string"
+                    },
+                    "include_dates_expression": {
+                        "title": "Include Dates Expression",
+                        "type": "string"
+                    },
+                    "exclude_dates_expression": {
+                        "title": "Exclude Dates Expression",
+                        "type": "string"
+                    },
+                    "editable": {
+                        "title": "Editable",
+                        "type": "boolean",
+                        "default": true
+                    }
+                }
+            },
+            "ScheduledTransaction": {
+                "title": "ScheduledTransaction",
+                "required": [
+                    "schedule_name",
+                    "timing",
+                    "generated_transaction_type",
+                    "amount_expression"
+                ],
+                "type": "object",
+                "properties": {
+                    "schedule_name": {
+                        "title": "Schedule Name",
+                        "type": "string"
+                    },
+                    "timing": {
+                        "$ref": "#/components/schemas/ScheduledTransactionTiming"
+                    },
+                    "generated_transaction_type": {
+                        "title": "Generated Transaction Type",
+                        "type": "string"
+                    },
+                    "amount_expression": {
+                        "title": "Amount Expression",
+                        "type": "string"
+                    }
+                }
+            },
+            "ScheduledTransactionTiming": {
+                "title": "ScheduledTransactionTiming",
+                "enum": [
+                    "start_of_day",
+                    "end_of_day"
+                ],
+                "description": "An enumeration."
+            },
+            "Transaction": {
+                "title": "Transaction",
+                "required": [
+                    "action_date",
+                    "value_date",
+                    "transaction_type",
+                    "system_generated"
+                ],
+                "type": "object",
+                "properties": {
+                    "action_date": {
+                        "title": "Action Date",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "value_date": {
+                        "title": "Value Date",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "transaction_type": {
+                        "title": "Transaction Type",
+                        "type": "string"
+                    },
+                    "amount": {
+                        "title": "Amount",
+                        "type": "number",
+                        "default": 0
+                    },
+                    "system_generated": {
+                        "title": "System Generated",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "TransactionOperation": {
+                "title": "TransactionOperation",
+                "enum": [
+                    "credit",
+                    "debit",
+                    "set"
+                ],
+                "description": "An enumeration."
+            },
+            "TransactionTrace": {
+                "title": "TransactionTrace",
+                "required": [
+                    "transaction",
+                    "positions"
+                ],
+                "type": "object",
+                "properties": {
+                    "transaction": {
+                        "$ref": "#/components/schemas/Transaction"
+                    },
+                    "positions": {
+                        "title": "Positions",
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "number"
+                        }
+                    }
+                }
+            },
+            "TransactionType": {
+                "title": "TransactionType",
+                "required": [
+                    "name",
+                    "label"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "label": {
+                        "title": "Label",
+                        "type": "string"
+                    },
+                    "position_rules": {
+                        "title": "Position Rules",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PositionRule"
+                        },
+                        "default": []
+                    },
+                    "maximum_precision": {
+                        "title": "Maximum Precision",
+                        "type": "boolean",
+                        "default": false
+                    }
+                }
+            },
+            "TriggeredTransaction": {
+                "title": "TriggeredTransaction",
+                "required": [
+                    "trigger_transaction_type_name",
+                    "generated_transaction_type",
+                    "amount_expression"
+                ],
+                "type": "object",
+                "properties": {
+                    "trigger_transaction_type_name": {
+                        "title": "Trigger Transaction Type Name",
+                        "type": "string"
+                    },
+                    "generated_transaction_type": {
+                        "title": "Generated Transaction Type",
+                        "type": "string"
+                    },
+                    "amount_expression": {
+                        "title": "Amount Expression",
+                        "type": "string"
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
